@@ -3,15 +3,13 @@ import Null_processor
 
 shift_days = int(input("shift_days:"))
 
-whole_data = pd.read_excel("temp3.xlsx")
+whole_data = pd.read_excel("temp.xlsx")
 whole_data.drop("Unnamed: 0",axis=1,inplace=True)
 print(whole_data)
 
-# Null_processor.fill_null(whole_data)
-
 #填補空值
 whole_data = Null_processor.fill_null(whole_data)
-# print(whole_data)
+#輸出確認有沒有真的填補了空值
 whole_data.to_excel("whole_data with no null.xlsx")
 input("continue")
 
@@ -21,7 +19,7 @@ col_list = list(cols)
 col_list = col_list[0:4]+col_list[cols.get_loc("HOST_LAMIGO桃猿"):]+col_list[4:cols.get_loc("HOST_LAMIGO桃猿")]
 whole_data = whole_data[col_list]
 print(whole_data)
-# whole_data.to_excel("temp.xlsx")
+
 
 #準備時間序列分析用的資料格式
 cols = whole_data.columns 
