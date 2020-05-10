@@ -4,39 +4,100 @@ from sklearn import datasets
 from sklearn.linear_model import LinearRegression
 # from sklearn.cross_validation import train_test_split
 from sklearn import metrics
+from sklearn import preprocessing
 import numpy as np
 import math
 
 import datetime
 
 from  Regression import Regression
+import Scaling
+
+import matplotlib.pyplot as plt
+# from matplotlib.font_manager import FontProperties
    
 analysis_data = pd.read_excel("時間序列分析資料.xlsx")
 analysis_data.drop("Unnamed: 0",axis=1,inplace=True)
 # analysis_data.set_index("DATE",drop=False,inplace=True)
-print(analysis_data)
+print(analysis_data.dtypes)
+for col,i in enumerate(analysis_data.columns):
+    print(col,i)
 
 #設定x,y
-x = analysis_data.iloc[:,3:]
-y = analysis_data["BOX_OFFICE"]
+# x = pd.concat([analysis_data.iloc[:,20:26], analysis_data.iloc[:,47:53]],axis = 1)
+x = analysis_data.iloc[:,29]/1000
+y = analysis_data["BOX_OFFICE"]/1000
+
+print("regression with no regularization","\n")
+split_date = datetime.datetime.strptime("2019-03-23", "%Y-%m-%d")
+split_index = analysis_data[analysis_data.DATE == split_date].index.tolist()[0]
+
+x = x[:,np.newaxis]
+
+x_train = x[0:split_index]
+x_test = x[split_index:]
+y_train = y.iloc[0:split_index]
+y_test = y.iloc[split_index:]
+# print(x_train)
+
+reg = LinearRegression()
+reg.fit(x_train, y_train)
+
+train_score=reg.score(x_train,y_train) 
+test_score=reg.score(x_test,y_test) 
+coeff_used = np.sum(reg.coef_!=0)
+
+print("training score:", train_score) 
+print("test score: ", test_score)
+print("intercept:",reg.intercept_)
+print("coefficient for previous box office:",reg.coef_[0])
+print("-------------------------------------------------------")
+
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei'] 
+plt.rcParams['axes.unicode_minus'] = False
+plt.plot(x,y,'o',markersize=15,alpha=0.3)
+plt.plot(x,reg.intercept_+reg.coef_*x,linewidth=5)
+plt.xlabel('前場票房')
+plt.ylabel('當場票房')
+plt.show()
+plt.savefig('前場票房的預測')
+
+#feature scaling for x,y
+x = Scaling.scale_x(x)
+# x = x/1000
+y = Scaling.scale_y(y) 
+# x = pd.DataFrame(preprocessing.scale(x))
+# y = pd.DataFrame(preprocessing.scale(y))
+print(x)
+print(y)
+input("continue")
 
 #設定train,test data
 split_date = datetime.datetime.strptime("2019-03-23", "%Y-%m-%d")
 split_index = analysis_data[analysis_data.DATE == split_date].index.tolist()[0]
-print("split_index:",split_index)
+print("split_index:",split_index,"\n")
 
+# x_train = x[0:split_index]
+# x_test = x[split_index:]
 x_train = x.iloc[0:split_index,:] 
 x_test = x.iloc[split_index:,:]
 y_train = y.iloc[0:split_index]
 y_test = y.iloc[split_index:]
 
+# x_num = len(list(x))
 x_num = x.shape[1]
 
 #------------------------------------------------
 reg = Regression(x_train,y_train,x_test,y_test)
-reg.lasso_reg(47,10e3)
+reg.lasso_reg(1,10e3)
+
 print()
+
 reg.raw_reg()
+
+print()
+
+reg.reg_with_rfe()
 input("continue")
 
 #---------------------------------------------

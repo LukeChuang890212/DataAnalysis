@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+from sklearn import preprocessing
 
 # def find_low_corr_col(corr_matrix):
 
@@ -25,6 +27,8 @@ y = analysis_data["BOX_OFFICE"]
 # plot_corr_matrix(x)
 
 corr_list = []
+col_list = x.columns
+x_list = []
 for i in range(x.shape[1]):
     corr = x.iloc[:,i].corr(y)
     #如果相關係數等於nan不要記錄起來
@@ -32,15 +36,25 @@ for i in range(x.shape[1]):
         print("this is nan:")
         print(x.columns[i])
         analysis_data.drop(x.columns[i],axis=1,inplace=True)
-        continue   
-    corr_list.append(corr)
-print(corr_list)
+        continue
+    if(corr > 0.2 or corr < -0.2):
+        print(col_list[i]+':',corr)
+        x_list.append(col_list[i])   
+        corr_list.append(corr)
+    else:
+        continue
+# print(corr_list)
 
 #畫出描述各變數與票房關係的長條圖
-plot_x = list(analysis_data.iloc[:,3:].columns)
-plt.bar(plot_x,corr_list)
-plt.savefig('各變數與票房相關係數.png')
+# plot_x = list(analysis_data.iloc[:,3:].columns)
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei'] 
+plt.rcParams['axes.unicode_minus'] = False
+plt.bar(x_list,corr_list,width=0.5)
+plt.grid(axis='y')
+plt.savefig('重要變數與票房相關係數.png')
+plt.axhline(y=0,color="black")
 plt.show()
+
 
 #將刪掉與y相關係數為nan的變數欄位後的新資料表格存起來
 analysis_data.to_excel("時間序列分析資料.xlsx")
