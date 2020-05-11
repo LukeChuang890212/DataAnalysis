@@ -24,13 +24,21 @@ for col,i in enumerate(analysis_data.columns):
     print(col,i)
 
 #設定x,y
-# x = pd.concat([analysis_data.iloc[:,20:26], analysis_data.iloc[:,47:53]],axis = 1)
-x = analysis_data.iloc[:,29]/1000
+# analysis_data = analysis_data[(analysis_data["Sat"] != 1) & (analysis_data["Sun"] != 1)].reset_index()
+# print(analysis_data)
+# x = pd.concat([analysis_data.iloc[:,56:63], analysis_data.iloc[:,[65,69,70,74,83,87,88,92]]],axis = 1)
+x = analysis_data["Previous_BOX_OFFICE"]/1000
 y = analysis_data["BOX_OFFICE"]/1000
+print(x)
+input("continue")
 
+#前場票房對當場票房的simple regression
+#--------------------------------------------------------------------------------
 print("regression with no regularization","\n")
-split_date = datetime.datetime.strptime("2019-03-23", "%Y-%m-%d")
+split_date = datetime.datetime.strptime("2019-03-26", "%Y-%m-%d")
+# print(analysis_data[analysis_data.DATE == split_date])
 split_index = analysis_data[analysis_data.DATE == split_date].index.tolist()[0]
+# print(split_index)
 
 x = x[:,np.newaxis]
 
@@ -38,13 +46,14 @@ x_train = x[0:split_index]
 x_test = x[split_index:]
 y_train = y.iloc[0:split_index]
 y_test = y.iloc[split_index:]
-# print(x_train)
+# print(x_test)
+# print(y_test)
 
 reg = LinearRegression()
 reg.fit(x_train, y_train)
 
-train_score=reg.score(x_train,y_train) 
-test_score=reg.score(x_test,y_test) 
+train_score = reg.score(x_train,y_train) 
+test_score = reg.score(x_test,y_test) 
 coeff_used = np.sum(reg.coef_!=0)
 
 print("training score:", train_score) 
@@ -59,8 +68,9 @@ plt.plot(x,y,'o',markersize=15,alpha=0.3)
 plt.plot(x,reg.intercept_+reg.coef_*x,linewidth=5)
 plt.xlabel('前場票房')
 plt.ylabel('當場票房')
-plt.show()
 plt.savefig('前場票房的預測')
+plt.show()
+#-----------------------------------------------------------------------
 
 #feature scaling for x,y
 x = Scaling.scale_x(x)
