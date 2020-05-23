@@ -36,7 +36,7 @@ for wheather_data in wheather_datas:
     plt.scatter(x, y, s=75, alpha=.5)
     plt.title(wheather_data+"對票房關係")
     # 標示x軸(labelpad代表與圖片的距離)
-    plt.xlabel(wheather_data)
+    plt.xlabel(wheather_dataㄋ)
     # 標示y軸(labelpad代表與圖片的距離)
     plt.ylabel("票房")
     # plt.xlim(-1.5, 1.5)
