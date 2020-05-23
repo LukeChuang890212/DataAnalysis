@@ -46,4 +46,31 @@ def plot_line_graph(source):
         line, selectors, points, rules, text
     ).properties(
         width=600, height=300
-    ).save("圖表\chart.html")
+    ).save("圖表\\"+source.columns[2]+" by "+source.columns[0]+".html")
+
+def plot_line_graph_by_date(source):
+    source = source[[source.columns[1],source.columns[0],source.columns[2]]].sort_values(source.columns[1]).reset_index()
+    source.drop(["index"],axis = 1,inplace=True)
+
+    highlight = alt.selection(type='single', on='mouseover',
+                          fields=[source.columns[0]], nearest=True)
+
+    base = alt.Chart(source).encode(
+        x=source.columns[1]+':T',
+        y=source.columns[2]+':Q',
+        color=source.columns[0]+':N'
+    )
+
+    points = base.mark_circle().encode(
+        opacity=alt.value(0)
+    ).add_selection(
+        highlight
+    ).properties(
+        width=600
+    )
+
+    lines = base.mark_line().encode(
+        size=alt.condition(~highlight, alt.value(1), alt.value(3))
+    )
+
+    (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+".html")
