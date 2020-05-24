@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": "circle", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "opacity": {"value": 0}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}, "selection": {"selector007": {"type": "single", "on": "mouseover", "fields": ["Stadium"], "nearest": true}}, "width": 600}, {"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "size": {"condition": {"value": 1, "selection": {"not": "selector007"}}, "value": 3}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}}], "data": {"name": "data-03be4c2d6e1c36e1e3886ff049958a1e"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-03be4c2d6e1c36e1e3886ff049958a1e": [{"Stadium": "\u6d32\u969b", "DATE": "2017-03-26T00:00:00", "BOX_OFFICE": 0.48295}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-15T00:00:00", "BOX_OFFICE": 0.2868}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-16T00:00:00", "BOX_OFFICE": 0.2147}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-18T00:00:00", "BOX_OFFICE": 0.1934}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-20T00:00:00", "BOX_OFFICE": 0.19165}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-21T00:00:00", "BOX_OFFICE": 0.17805}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-22T00:00:00", "BOX_OFFICE": 0.48385}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-23T00:00:00", "BOX_OFFICE": 0.32335}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-04T00:00:00", "BOX_OFFICE": 0.1677}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-14T00:00:00", "BOX_OFFICE": 0.1606}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-05T00:00:00", "BOX_OFFICE": 0.55275}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-22T00:00:00", "BOX_OFFICE": 0.15605}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-25T00:00:00", "BOX_OFFICE": 0.2377}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-26T00:00:00", "BOX_OFFICE": 0.4095}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-27T00:00:00", "BOX_OFFICE": 0.25495}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-30T00:00:00", "BOX_OFFICE": 0.1293}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-31T00:00:00", "BOX_OFFICE": 0.1304}, {"Stadium": "\u6d32\u969b", "DATE": "2017-09-29T00:00:00", "BOX_OFFICE": 0.1397}, {"Stadium": "\u6d32\u969b", "DATE": "2017-09-30T00:00:00", "BOX_OFFICE": 0.2581}, {"Stadium": "\u6d32\u969b", "DATE": "2017-08-06T00:00:00", "BOX_OFFICE": 0.3388}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-13T00:00:00", "BOX_OFFICE": 0.2029}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-12T00:00:00", "BOX_OFFICE": 0.1775}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-05T00:00:00", "BOX_OFFICE": 0.1259}, {"Stadium": "\u6d32\u969b", "DATE": "2017-03-29T00:00:00", "BOX_OFFICE": 0.20175}, {"Stadium": "\u6d32\u969b", "DATE": "2017-03-30T00:00:00", "BOX_OFFICE": 0.17905}, {"Stadium": "\u6d32\u969b", "DATE": "2017-04-14T00:00:00", "BOX_OFFICE": 0.18935}, {"Stadium": "\u6d32\u969b", "DATE": "2017-04-15T00:00:00", "BOX_OFFICE": 0.5006}, {"Stadium": "\u6d32\u969b", "DATE": "2017-04-16T00:00:00", "BOX_OFFICE": 0.28595}, {"Stadium": "\u6d32\u969b", "DATE": "2017-04-29T00:00:00", "BOX_OFFICE": 0.3533}, {"Stadium": "\u6d32\u969b", "DATE": "2017-04-30T00:00:00", "BOX_OFFICE": 0.30535}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-03T00:00:00", "BOX_OFFICE": 0.18055}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-20T00:00:00", "BOX_OFFICE": 0.4599}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-21T00:00:00", "BOX_OFFICE": 0.30105}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-21T00:00:00", "BOX_OFFICE": 0.16915}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-23T00:00:00", "BOX_OFFICE": 0.16435}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-25T00:00:00", "BOX_OFFICE": 0.17575}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-26T00:00:00", "BOX_OFFICE": 0.2009}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-27T00:00:00", "BOX_OFFICE": 0.55055}, {"Stadium": "\u6d32\u969b", "DATE": "2017-05-28T00:00:00", "BOX_OFFICE": 0.63315}, {"Stadium": "\u6d32\u969b", "DATE": "2017-06-06T00:00:00", "BOX_OFFICE": 0.15775}, {"Stadium": "\u6d32\u969b", "DATE": "2017-06-29T00:00:00", "BOX_OFFICE": 0.12265}, {"Stadium": "\u6d32\u969b", "DATE": "2017-07-02T00:00:00", "BOX_OFFICE": 0.1569}, {"Stadium": "\u6d32\u969b", "DATE": "2017-10-01T00:00:00", "BOX_OFFICE": 0.27605}, {"Stadium": "\u6d32\u969b", "DATE": "2017-10-04T00:00:00", "BOX_OFFICE": 0.2039}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

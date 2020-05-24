@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": "circle", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "opacity": {"value": 0}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}, "selection": {"selector004": {"type": "single", "on": "mouseover", "fields": ["Stadium"], "nearest": true}}, "width": 600}, {"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "size": {"condition": {"value": 1, "selection": {"not": "selector004"}}, "value": 3}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}}], "data": {"name": "data-7831e154fa0c70458984c07bc9434e97"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-7831e154fa0c70458984c07bc9434e97": [{"Stadium": "\u6597\u516d", "DATE": "2017-04-13T00:00:00", "BOX_OFFICE": 0.3393333333333333}, {"Stadium": "\u6597\u516d", "DATE": "2017-04-26T00:00:00", "BOX_OFFICE": 0.31653333333333333}, {"Stadium": "\u6597\u516d", "DATE": "2017-05-04T00:00:00", "BOX_OFFICE": 0.20613333333333334}, {"Stadium": "\u6597\u516d", "DATE": "2017-05-10T00:00:00", "BOX_OFFICE": 0.35586666666666666}, {"Stadium": "\u6597\u516d", "DATE": "2017-06-27T00:00:00", "BOX_OFFICE": 0.3012}, {"Stadium": "\u6597\u516d", "DATE": "2017-07-01T00:00:00", "BOX_OFFICE": 0.1892}, {"Stadium": "\u6597\u516d", "DATE": "2017-07-02T00:00:00", "BOX_OFFICE": 0.1648}, {"Stadium": "\u6597\u516d", "DATE": "2017-07-11T00:00:00", "BOX_OFFICE": 0.3104}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-01T00:00:00", "BOX_OFFICE": 0.3042}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-06T00:00:00", "BOX_OFFICE": 0.2024}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-09T00:00:00", "BOX_OFFICE": 0.24046666666666666}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-19T00:00:00", "BOX_OFFICE": 0.40713333333333335}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-20T00:00:00", "BOX_OFFICE": 0.35}, {"Stadium": "\u6597\u516d", "DATE": "2017-08-29T00:00:00", "BOX_OFFICE": 0.33413333333333334}, {"Stadium": "\u6597\u516d", "DATE": "2017-09-05T00:00:00", "BOX_OFFICE": 0.33466666666666667}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

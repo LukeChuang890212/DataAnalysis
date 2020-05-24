@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": "circle", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "opacity": {"value": 0}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}, "selection": {"selector005": {"type": "single", "on": "mouseover", "fields": ["Stadium"], "nearest": true}}, "width": 600}, {"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "size": {"condition": {"value": 1, "selection": {"not": "selector005"}}, "value": 3}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}}], "data": {"name": "data-10c1cba0f06e7d7c20bf38d5139b77a7"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-10c1cba0f06e7d7c20bf38d5139b77a7": [{"Stadium": "\u65b0\u838a", "DATE": "2017-03-26T00:00:00", "BOX_OFFICE": 0.4870781893004115}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-11T00:00:00", "BOX_OFFICE": 0.2528395061728395}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-12T00:00:00", "BOX_OFFICE": 0.45127572016460904}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-13T00:00:00", "BOX_OFFICE": 0.7288888888888889}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-14T00:00:00", "BOX_OFFICE": 0.5568724279835391}, {"Stadium": "\u65b0\u838a", "DATE": "2017-06-09T00:00:00", "BOX_OFFICE": 0.3502880658436214}, {"Stadium": "\u65b0\u838a", "DATE": "2017-06-10T00:00:00", "BOX_OFFICE": 0.8758847736625515}, {"Stadium": "\u65b0\u838a", "DATE": "2017-06-11T00:00:00", "BOX_OFFICE": 0.611358024691358}, {"Stadium": "\u65b0\u838a", "DATE": "2017-06-18T00:00:00", "BOX_OFFICE": 0.11251028806584362}, {"Stadium": "\u65b0\u838a", "DATE": "2017-06-20T00:00:00", "BOX_OFFICE": 0.2617283950617284}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-12T00:00:00", "BOX_OFFICE": 0.25646090534979427}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-14T00:00:00", "BOX_OFFICE": 0.23753086419753086}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-15T00:00:00", "BOX_OFFICE": 0.3716872427983539}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-16T00:00:00", "BOX_OFFICE": 0.7037037037037037}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-17T00:00:00", "BOX_OFFICE": 0.7075720164609054}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-19T00:00:00", "BOX_OFFICE": 0.29835390946502055}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-09T00:00:00", "BOX_OFFICE": 0.2305349794238683}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-21T00:00:00", "BOX_OFFICE": 0.30477366255144034}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-04T00:00:00", "BOX_OFFICE": 0.2334156378600823}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-30T00:00:00", "BOX_OFFICE": 0.519753086419753}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-01T00:00:00", "BOX_OFFICE": 0.6918518518518518}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-02T00:00:00", "BOX_OFFICE": 0.7609053497942386}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-02T00:00:00", "BOX_OFFICE": 0.38526748971193414}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-07T00:00:00", "BOX_OFFICE": 0.32238683127572015}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-08T00:00:00", "BOX_OFFICE": 0.7546502057613169}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-09T00:00:00", "BOX_OFFICE": 0.47860082304526746}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-12T00:00:00", "BOX_OFFICE": 0.23473251028806585}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-14T00:00:00", "BOX_OFFICE": 0.2553086419753086}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-15T00:00:00", "BOX_OFFICE": 0.4316872427983539}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-16T00:00:00", "BOX_OFFICE": 0.3712757201646091}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-19T00:00:00", "BOX_OFFICE": 0.30790123456790125}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-20T00:00:00", "BOX_OFFICE": 0.322880658436214}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-25T00:00:00", "BOX_OFFICE": 0.32452674897119344}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-28T00:00:00", "BOX_OFFICE": 0.334238683127572}, {"Stadium": "\u65b0\u838a", "DATE": "2017-04-29T00:00:00", "BOX_OFFICE": 0.5440329218106996}, {"Stadium": "\u65b0\u838a", "DATE": "2017-05-02T00:00:00", "BOX_OFFICE": 0.22098765432098766}, {"Stadium": "\u65b0\u838a", "DATE": "2017-09-22T00:00:00", "BOX_OFFICE": 0.3145679012345679}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

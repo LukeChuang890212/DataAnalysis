@@ -73,4 +73,4 @@ def plot_line_graph_by_date(source):
         size=alt.condition(~highlight, alt.value(1), alt.value(3))
     )
 
-    (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+".html")
+    (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+'('+source.iloc[0,0]+')'+".html")

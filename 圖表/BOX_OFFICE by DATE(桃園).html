@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": "circle", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "opacity": {"value": 0}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}, "selection": {"selector006": {"type": "single", "on": "mouseover", "fields": ["Stadium"], "nearest": true}}, "width": 600}, {"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Stadium"}, "size": {"condition": {"value": 1, "selection": {"not": "selector006"}}, "value": 3}, "x": {"type": "temporal", "field": "DATE"}, "y": {"type": "quantitative", "field": "BOX_OFFICE"}}}], "data": {"name": "data-1de0f277392a82d1b45f11ad359a26f8"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-1de0f277392a82d1b45f11ad359a26f8": [{"Stadium": "\u6843\u5712", "DATE": "2017-03-28T00:00:00", "BOX_OFFICE": 0.4356}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-22T00:00:00", "BOX_OFFICE": 0.50465}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-23T00:00:00", "BOX_OFFICE": 0.34525}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-25T00:00:00", "BOX_OFFICE": 0.17865}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-27T00:00:00", "BOX_OFFICE": 0.2063}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-28T00:00:00", "BOX_OFFICE": 0.4056}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-08T00:00:00", "BOX_OFFICE": 0.20635}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-10T00:00:00", "BOX_OFFICE": 0.2305}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-11T00:00:00", "BOX_OFFICE": 0.2507}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-12T00:00:00", "BOX_OFFICE": 0.5208}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-13T00:00:00", "BOX_OFFICE": 0.3459}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-15T00:00:00", "BOX_OFFICE": 0.25835}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-17T00:00:00", "BOX_OFFICE": 0.30555}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-23T00:00:00", "BOX_OFFICE": 0.28085}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-24T00:00:00", "BOX_OFFICE": 0.26945}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-25T00:00:00", "BOX_OFFICE": 0.3067}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-26T00:00:00", "BOX_OFFICE": 0.6556}, {"Stadium": "\u6843\u5712", "DATE": "2017-08-27T00:00:00", "BOX_OFFICE": 0.4193}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-08T00:00:00", "BOX_OFFICE": 0.25595}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-09T00:00:00", "BOX_OFFICE": 0.8556}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-10T00:00:00", "BOX_OFFICE": 0.52265}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-13T00:00:00", "BOX_OFFICE": 0.1539}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-14T00:00:00", "BOX_OFFICE": 0.1713}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-27T00:00:00", "BOX_OFFICE": 0.2634}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-28T00:00:00", "BOX_OFFICE": 0.2692}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-29T00:00:00", "BOX_OFFICE": 0.2509}, {"Stadium": "\u6843\u5712", "DATE": "2017-09-30T00:00:00", "BOX_OFFICE": 0.4067}, {"Stadium": "\u6843\u5712", "DATE": "2017-10-01T00:00:00", "BOX_OFFICE": 0.35145}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-21T00:00:00", "BOX_OFFICE": 0.25625}, {"Stadium": "\u6843\u5712", "DATE": "2017-10-07T00:00:00", "BOX_OFFICE": 0.7372}, {"Stadium": "\u6843\u5712", "DATE": "2017-07-06T00:00:00", "BOX_OFFICE": 0.11455}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-25T00:00:00", "BOX_OFFICE": 0.70985}, {"Stadium": "\u6843\u5712", "DATE": "2017-03-30T00:00:00", "BOX_OFFICE": 0.24075}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-01T00:00:00", "BOX_OFFICE": 0.52955}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-02T00:00:00", "BOX_OFFICE": 0.56575}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-02T00:00:00", "BOX_OFFICE": 0.2636}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-05T00:00:00", "BOX_OFFICE": 0.25465}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-06T00:00:00", "BOX_OFFICE": 0.21845}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-18T00:00:00", "BOX_OFFICE": 0.22045}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-20T00:00:00", "BOX_OFFICE": 0.2161}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-22T00:00:00", "BOX_OFFICE": 0.7056}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-23T00:00:00", "BOX_OFFICE": 0.35775}, {"Stadium": "\u6843\u5712", "DATE": "2017-04-23T00:00:00", "BOX_OFFICE": 0.4677}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-05T00:00:00", "BOX_OFFICE": 0.3558}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-06T00:00:00", "BOX_OFFICE": 0.65485}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-07T00:00:00", "BOX_OFFICE": 0.39405}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-18T00:00:00", "BOX_OFFICE": 0.28355}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-19T00:00:00", "BOX_OFFICE": 0.2238}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-20T00:00:00", "BOX_OFFICE": 0.61125}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-21T00:00:00", "BOX_OFFICE": 0.40565}, {"Stadium": "\u6843\u5712", "DATE": "2017-05-25T00:00:00", "BOX_OFFICE": 0.18945}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-07T00:00:00", "BOX_OFFICE": 0.1947}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-08T00:00:00", "BOX_OFFICE": 0.1859}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-09T00:00:00", "BOX_OFFICE": 0.36845}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-10T00:00:00", "BOX_OFFICE": 0.70605}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-11T00:00:00", "BOX_OFFICE": 0.6117}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-20T00:00:00", "BOX_OFFICE": 0.1744}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-21T00:00:00", "BOX_OFFICE": 0.50525}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-24T00:00:00", "BOX_OFFICE": 0.80955}, {"Stadium": "\u6843\u5712", "DATE": "2017-06-28T00:00:00", "BOX_OFFICE": 0.20565}, {"Stadium": "\u6843\u5712", "DATE": "2017-10-08T00:00:00", "BOX_OFFICE": 0.53795}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
