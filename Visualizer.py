@@ -73,4 +73,22 @@ def plot_line_graph_by_date(source):
         size=alt.condition(~highlight, alt.value(1), alt.value(3))
     )
 
-    (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+'('+source.iloc[0,0]+')'+".html")
+    # (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+'('+source.iloc[0,0]+')'+".html")
+    (points + lines).save("圖表\\"+source.columns[2]+" by "+source.columns[1]+"(球場).html")
+
+def plot_bar_chart(source):
+
+    bars = alt.Chart().mark_bar().encode(
+        x=source.columns[1]+':O',
+        y=alt.Y('mean('+source.columns[0]+'):Q', title='Mean BOX_OFFICE'),
+        color=source.columns[1]+':N',
+    )
+
+    error_bars = alt.Chart().mark_errorbar(extent='ci').encode(
+        x=source.columns[1]+':O',
+        y=source.columns[0]+':Q'
+    )
+
+    alt.layer(bars, error_bars, data=source).facet(
+        column=source.columns[2]+':N'
+    ).save("圖表\\各隊一週內票房變化.html")

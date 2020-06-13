@@ -1,5 +1,6 @@
 import pandas as pd
 import Null_processor
+import DataProcess
 
 shift_days = int(input("shift_days:"))
 
@@ -20,6 +21,9 @@ col_list = col_list[0:4]+col_list[cols.get_loc("HOST_LAMIGO桃猿"):]+col_list[4
 whole_data = whole_data[col_list]
 print(whole_data)
 
+for i,c in enumerate(whole_data.columns):
+    print(i,c)
+whole_data = DataProcess.add_game_res(whole_data)
 
 #準備時間序列分析用的資料格式
 cols = whole_data.columns 
