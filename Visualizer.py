@@ -80,8 +80,8 @@ def plot_bar_chart(source):
 
     bars = alt.Chart().mark_bar().encode(
         x=source.columns[1]+':O',
-        y=alt.Y('mean('+source.columns[0]+'):Q', title='Mean BOX_OFFICE'),
-        color=source.columns[1]+':N',
+        y=alt.Y('mean('+source.columns[0]+'):Q'),
+        color=source.columns[1]+':N'
     )
 
     error_bars = alt.Chart().mark_errorbar(extent='ci').encode(
@@ -90,5 +90,6 @@ def plot_bar_chart(source):
     )
 
     alt.layer(bars, error_bars, data=source).facet(
-        column=source.columns[2]+':N'
+        column = alt.Column(source.columns[2]+':N', sort=["Tue","Wed","Thu","Fri","Sat","Sun"]),
+        # column=source.columns[2]+':N',       
     ).save("圖表\\各隊一週內票房變化.html")

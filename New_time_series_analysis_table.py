@@ -24,15 +24,18 @@ print(whole_data)
 for i,c in enumerate(whole_data.columns):
     print(i,c)
 whole_data = DataProcess.add_game_res(whole_data)
+input("continue3")
 
 #準備時間序列分析用的資料格式
 cols = whole_data.columns 
-previous_data = whole_data.iloc[:,cols.get_loc("HOST_LAMIGO桃猿"):].add_prefix("Previous_")
+previous_data = whole_data.iloc[:,cols.get_loc("HOST_LAMIGO桃猿"):cols.get_loc("client_wins")].add_prefix("Previous_")
 box_office_the_day = whole_data["BOX_OFFICE"]
 previous_data.insert(0,"Previous_BOX_OFFICE",box_office_the_day)
 previous_data = previous_data.shift(shift_days)
-analysis_data = pd.concat([whole_data.iloc[:,0:cols.get_loc("降水量(mm)")+1],previous_data],axis=1).iloc[shift_days:,:].reset_index(drop=True)
-analysis_data.drop(["Previous_index.1","STADIUM"],axis=1,inplace=True)
+analysis_data = pd.concat([whole_data.iloc[:,0:cols.get_loc("降水量(mm)")+1],whole_data.iloc[:,cols.get_loc("client_wins"):],previous_data],axis=1).iloc[shift_days:,:].reset_index(drop=True)
+analysis_data.drop(["STADIUM"],axis=1,inplace=True)
 print(analysis_data.columns)
+print(analysis_data.head())
+
 analysis_data.to_excel("時間序列分析資料.xlsx")
 
