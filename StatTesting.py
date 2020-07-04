@@ -4,6 +4,15 @@ import numpy as np
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 
+import pandas as pd 
+
+old_width = pd.get_option('display.max_colwidth')
+pd.set_option('display.max_colwidth', -1)
+
+pd.set_option('display.unicode.ambiguous_as_wide', True)
+pd.set_option('display.unicode.east_asian_width', True)
+pd.set_option('display.width', 180) 
+
 def t_test(group1, group2):
     mean1 = np.mean(group1)
     mean2 = np.mean(group2)
@@ -25,3 +34,4 @@ def anova(aov_data, variable):
     model = ols(variable,data = aov_data).fit()
     anova_table = sm.stats.anova_lm(model, typ=2)
     print(anova_table)
+    return anova_table

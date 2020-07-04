@@ -1,8 +1,10 @@
 import StatTesting as stat
-import pandas as pd 
-pd.set_option('display.unicode.ambiguous_as_wide', True)
-pd.set_option('display.unicode.east_asian_width', True)
-pd.set_option('display.width', 180) 
+from StatTesting import pd
+
+# import pandas as pd 
+# pd.set_option('display.unicode.ambiguous_as_wide', True)
+# pd.set_option('display.unicode.east_asian_width', True)
+# pd.set_option('display.width', 180) 
 
 analysis_data = pd.read_excel("時間序列分析資料.xlsx")
 analysis_data.drop("Unnamed: 0",axis=1,inplace=True)
@@ -39,7 +41,7 @@ res = {"Team":teams,"Week Day Mean":mean1s,"Weekend Mean":mean2s,"Week Day SE":m
 res_table = pd.DataFrame(res).round(4)
 print(res_table)
 
-#anova for box_office~host_team*day
+# anova for box_office~host_team*day
 value_vars = list(analysis_data.columns[3:7])
 value_vars.extend(list(analysis_data.columns[20:26]))
 # print(value_vars)
@@ -56,7 +58,11 @@ day_data.drop("index",axis=1,inplace=True)
 aov_data = pd.concat([host_team_data.join(day_data),analysis_data["BOX_OFFICE"]],axis=1)
 # print(aov_data)
 
-stat.anova(aov_data,"BOX_OFFICE~C(HostTeam)*C(Day)")
+anova_table = stat.anova(aov_data,"BOX_OFFICE~C(HostTeam)*C(Day)")
+
+anova_table.to_html('Effects of HostTeam and Day on BoxOffice.html',escape=False,index=True,sparsify=True,border=1,index_names=True,header=True)
+pd.set_option('display.max_colwidth', stat.old_width)
+
 
     
 
