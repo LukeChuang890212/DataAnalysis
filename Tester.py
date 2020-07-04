@@ -39,6 +39,24 @@ res = {"Team":teams,"Week Day Mean":mean1s,"Weekend Mean":mean2s,"Week Day SE":m
 res_table = pd.DataFrame(res).round(4)
 print(res_table)
 
+#anova for box_office~host_team*day
+value_vars = list(analysis_data.columns[3:7])
+value_vars.extend(list(analysis_data.columns[20:26]))
+# print(value_vars)
+
+aov_data = pd.melt(analysis_data, id_vars=["DATE"],value_vars=value_vars)
+# print(aov_data)
+host_team_data = aov_data[aov_data.value == 1].reset_index().iloc[0:719,1:3].rename(columns={"variable":"HostTeam"})
+# print(host_team_data)
+
+day_data = aov_data[aov_data.value == 1].reset_index().iloc[719:,2].to_frame().rename(columns={"variable":"Day"}).reset_index()
+day_data.drop("index",axis=1,inplace=True)
+# print(day_data)
+
+aov_data = pd.concat([host_team_data.join(day_data),analysis_data["BOX_OFFICE"]],axis=1)
+# print(aov_data)
+
+stat.anova(aov_data,"BOX_OFFICE~C(HostTeam)*C(Day)")
 
     
 

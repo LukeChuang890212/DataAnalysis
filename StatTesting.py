@@ -1,6 +1,9 @@
 from scipy import stats 
 import numpy as np
 
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
 def t_test(group1, group2):
     mean1 = np.mean(group1)
     mean2 = np.mean(group2)
@@ -18,4 +21,7 @@ def t_test(group1, group2):
                mean1=mean1, std1=modified_std1, nobs1=nobs1,   
                mean2=mean2, std2=modified_std2, nobs2=nobs2 )
     return mean1, mean2, modified_std1, modified_std2, statistic, pvalue
-
+def anova(aov_data, variable):
+    model = ols(variable,data = aov_data).fit()
+    anova_table = sm.stats.anova_lm(model, typ=2)
+    print(anova_table)
